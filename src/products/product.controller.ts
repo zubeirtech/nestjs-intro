@@ -28,13 +28,14 @@ export class ProductsController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  addProduct(@Body() body: PostBody): { id: string } {
+  async addProduct(@Body() body: PostBody) {
     const { title, description, price } = body;
-    const id = Math.random().toString();
-    const product = new Product(id, title, description, price);
-    this.productService.insertProduct(product);
-
-    return { id };
+    const product = await this.productService.insertProduct(
+      title,
+      description,
+      price,
+    );
+    return product;
   }
 
   @Get()
