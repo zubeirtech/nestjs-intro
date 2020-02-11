@@ -2,7 +2,6 @@ import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 
 import { ProductService } from './product.service';
 import { Product } from './product.model';
-import { get } from 'http';
 
 interface PostBody {
   title: string;
